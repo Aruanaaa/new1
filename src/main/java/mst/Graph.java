@@ -52,6 +52,10 @@ public class Graph {
         try (InputStream inputStream = Graph.class.getClassLoader().getResourceAsStream(filename);
              InputStreamReader reader = new InputStreamReader(inputStream)) {
 
+            if (inputStream == null) {
+                throw new RuntimeException("File not found in resources: " + filename);
+            }
+
             JsonArray graphsArray = gson.fromJson(reader, JsonArray.class);
 
             for (JsonElement graphElement : graphsArray) {
