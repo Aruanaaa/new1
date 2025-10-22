@@ -62,6 +62,9 @@ public class MSTComparison {
 
     private void writeResultsToJson() {
         try (FileWriter writer = new FileWriter("output/output_results.json")) {
+            // Создаем папку output если её нет
+            new java.io.File("output").mkdirs();
+
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             JsonArray resultsArray = new JsonArray();
 
