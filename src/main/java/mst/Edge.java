@@ -1,5 +1,7 @@
 package mst;
 
+import java.util.Objects; // Добавьте эту строку
+
 /**
  * Represents an edge in a graph with source, destination, and weight
  */
