@@ -49,14 +49,18 @@ public class Graph {
         List<Graph> graphs = new ArrayList<>();
         Gson gson = new Gson();
 
-        try (InputStream inputStream = Graph.class.getClassLoader().getResourceAsStream(filename);
-             InputStreamReader reader = new InputStreamReader(inputStream)) {
-
+        try (InputStream inputStream = Graph.class.getClassLoader().getResourceAsStream(filename)) {
             if (inputStream == null) {
-                throw new RuntimeException("File not found in resources: " + filename);
+                throw new RuntimeException("File not found in resources: " + filename +
+                        ". Make sure the file exists in src/main/resources");
             }
 
+            InputStreamReader reader = new InputStreamReader(inputStream);
             JsonArray graphsArray = gson.fromJson(reader, JsonArray.class);
+
+            if (graphsArray == null) {
+                throw new RuntimeException("Invalid JSON format in file: " + filename);
+            }
 
             for (JsonElement graphElement : graphsArray) {
                 JsonObject graphObject = graphElement.getAsJsonObject();
@@ -75,8 +79,11 @@ public class Graph {
 
                 graphs.add(new Graph(vertices, edges));
             }
+
+            System.out.println("Successfully loaded " + graphs.size() + " graphs from " + filename);
+
         } catch (Exception e) {
-            throw new RuntimeException("Error loading graphs from " + filename, e);
+            throw new RuntimeException("Error loading graphs from " + filename + ": " + e.getMessage(), e);
         }
 
         return graphs;
