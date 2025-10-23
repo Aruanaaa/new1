@@ -41,7 +41,7 @@ public class JSONChecker {
                 JsonArray graphsArray = jsonElement.getAsJsonObject().getAsJsonArray("graphs");
                 System.out.println("  Number of graphs: " + graphsArray.size());
 
-                // Check first graph structure
+                // Check 1 graph structure
                 if (graphsArray.size() > 0) {
                     JsonObject firstGraph = graphsArray.get(0).getAsJsonObject();
                     System.out.println("  First graph has:");
