@@ -20,7 +20,7 @@ class MSTAlgorithmsTest {
         // Both algorithms should find same total weight
         assertEquals(primResult.getTotalWeight(), kruskalResult.getTotalWeight(), 0.001);
 
-        // MST should have V-1 edges
+        // MST should have V-1  edges
         assertEquals(graph.getVertices() - 1, primResult.getEdges().size());
         assertEquals(graph.getVertices() - 1, kruskalResult.getEdges().size());
 
