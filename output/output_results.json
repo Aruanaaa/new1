@@ -6,8 +6,8 @@
       "edges": 2134,
       "prim": {
         "totalWeight": 32827.0,
-        "executionTimeNs": 268900,
-        "executionTimeMs": 0.2689,
+        "executionTimeNs": 314300,
+        "executionTimeMs": 0.3143,
         "operationsCount": 32016,
         "mstEdges": [
           [
@@ -10684,8 +10684,8 @@
       },
       "kruskal": {
         "totalWeight": 32827.0,
-        "executionTimeNs": 364900,
-        "executionTimeMs": 0.3649,
+        "executionTimeNs": 393800,
+        "executionTimeMs": 0.3938,
         "operationsCount": 38413,
         "mstEdges": [
           [
@@ -21367,8 +21367,8 @@
       "edges": 26209,
       "prim": {
         "totalWeight": 4256.0,
-        "executionTimeNs": 3266800,
-        "executionTimeMs": 3.2668,
+        "executionTimeNs": 2625700,
+        "executionTimeMs": 2.6257,
         "operationsCount": 154146,
         "mstEdges": [
           [
@@ -32820,8 +32820,8 @@
       },
       "kruskal": {
         "totalWeight": 4256.0,
-        "executionTimeNs": 3834900,
-        "executionTimeMs": 3.8349,
+        "executionTimeNs": 4367900,
+        "executionTimeMs": 4.3679,
         "operationsCount": 400977,
         "mstEdges": [
           [
@@ -44278,8 +44278,8 @@
       "edges": 143820,
       "prim": {
         "totalWeight": 2403.0,
-        "executionTimeNs": 7479500,
-        "executionTimeMs": 7.4795,
+        "executionTimeNs": 7391200,
+        "executionTimeMs": 7.3912,
         "operationsCount": 632599,
         "mstEdges": [
           [
@@ -56276,8 +56276,8 @@
       },
       "kruskal": {
         "totalWeight": 2403.0,
-        "executionTimeNs": 17167100,
-        "executionTimeMs": 17.1671,
+        "executionTimeNs": 18548800,
+        "executionTimeMs": 18.5488,
         "operationsCount": 2479592,
         "mstEdges": [
           [
@@ -68279,8 +68279,8 @@
       "edges": 3076,
       "prim": {
         "totalWeight": 16939.0,
-        "executionTimeNs": 182400,
-        "executionTimeMs": 0.1824,
+        "executionTimeNs": 206000,
+        "executionTimeMs": 0.206,
         "operationsCount": 39126,
         "mstEdges": [
           [
@@ -79267,8 +79267,8 @@
       },
       "kruskal": {
         "totalWeight": 16939.0,
-        "executionTimeNs": 566600,
-        "executionTimeMs": 0.5666,
+        "executionTimeNs": 559200,
+        "executionTimeMs": 0.5592,
         "operationsCount": 51720,
         "mstEdges": [
           [
@@ -90260,8 +90260,8 @@
       "edges": 142872,
       "prim": {
         "totalWeight": 2758.0,
-        "executionTimeNs": 4656100,
-        "executionTimeMs": 4.6561,
+        "executionTimeNs": 5798000,
+        "executionTimeMs": 5.798,
         "operationsCount": 636360,
         "mstEdges": [
           [
@@ -103723,8 +103723,8 @@
       },
       "kruskal": {
         "totalWeight": 2758.0,
-        "executionTimeNs": 19704500,
-        "executionTimeMs": 19.7045,
+        "executionTimeNs": 19910700,
+        "executionTimeMs": 19.9107,
         "operationsCount": 2596558,
         "mstEdges": [
           [
@@ -117186,8 +117186,8 @@
       }
     }
   ],
-  "summary": "Prim: 15 853 700 ns (15,854 ms), 1 494 247 ops | Kruskal: 41 638 000 ns (41,638 ms), 5 567 260 ops | Faster: Prim (2,63x speedup)",
+  "summary": "Prim: 16 335 200 ns (16,335 ms), 1 494 247 ops | Kruskal: 43 780 400 ns (43,780 ms), 5 567 260 ops | Faster: Prim (2,68x speedup)",
   "totalGraphsTested": 5,
-  "comparisonDate": "Thu Oct 23 22:03:04 GMT+05:00 2025",
+  "comparisonDate": "Thu Oct 23 23:06:13 GMT+05:00 2025",
   "algorithmComparison": "Prim faster in 5/5 cases (100,0%)"
 }

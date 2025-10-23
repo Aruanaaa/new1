@@ -4,9 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Exports MST comparison results to CSV format for better data analysis
- */
+
 public class CSVExporter {
 
     /**
@@ -68,9 +66,7 @@ public class CSVExporter {
         }
     }
 
-    /**
-     * Generate a summary table for the report
-     */
+
     public static void printSummaryTable(List<MSTComparison.ComparisonResult> results) {
         System.out.println("\n" + "=".repeat(120));
         System.out.println("SUMMARY PERFORMANCE TABLE");
