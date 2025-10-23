@@ -26,14 +26,14 @@ public class Main {
             try {
                 System.out.println("Loading: " + testFile);
                 List<Graph> graphs = Graph.loadGraphsFromJson(testFile);
-                System.out.printf("✅ Successfully loaded %d graphs from %s%n%n", graphs.size(), testFile);
+                System.out.printf("Successfully loaded %d graphs from %s%n%n", graphs.size(), testFile);
 
                 MSTComparison comparison = new MSTComparison(graphs);
                 comparison.runComparison();
                 anyFileLoaded = true;
 
             } catch (Exception e) {
-                System.err.println("❌ Failed to process " + testFile + ": " + e.getMessage());
+                System.err.println("Failed to process " + testFile + ": " + e.getMessage());
             }
         }
 
