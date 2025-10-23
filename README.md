@@ -3,7 +3,7 @@
 ## Project Overview
 This project implements Prim's and Kruskal's algorithms to optimize city transportation networks by finding Minimum Spanning Trees with minimal construction costs.
 
-## 🚀 Features
+# Features
 - **Prim's Algorithm** with priority queue optimization
 - **Kruskal's Algorithm** with Union-Find data structure
 - **JSON-based** input/output system
@@ -11,7 +11,7 @@ This project implements Prim's and Kruskal's algorithms to optimize city transpo
 - **Visualization**: GraphViz DOT file generation
 - **Comprehensive testing** with JUnit
 
-## 📁 Project Structure
+#Project Structure
 src/
 ├── main/java/mst/
 │ ├── Graph.java # Custom graph data structure
@@ -32,9 +32,8 @@ src/
 └── mst_extra_large_graphs.json
 
 
-## 🛠️ How to Run
+## How to Run
 
-### Prerequisites
 - Java 11+
 - Maven
 - GraphViz (optional, for visualization)
