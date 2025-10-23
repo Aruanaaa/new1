@@ -1,0 +1,59 @@
+// DOT file generated for MST Visualization
+// Use: https://edotor.net/ or install GraphViz locally
+digraph Graph2_PrimMST {
+  rankdir=LR;
+  node [shape=circle, style=filled, fillcolor=lightblue, fontname=Arial];
+  edge [fontname=Arial, fontsize=10];
+
+  // Original graph edges (light gray)
+  0 -> 5 [label="2,0", color=gray, penwidth=1, style=dashed];
+  5 -> 4 [label="4,0", color=gray, penwidth=1, style=dashed];
+  0 -> 8 [label="15,0", color=gray, penwidth=1, style=dashed];
+  0 -> 6 [label="12,0", color=gray, penwidth=1, style=dashed];
+  4 -> 10 [label="13,0", color=gray, penwidth=1, style=dashed];
+  6 -> 13 [label="3,0", color=gray, penwidth=1, style=dashed];
+  6 -> 1 [label="9,0", color=gray, penwidth=1, style=dashed];
+  8 -> 22 [label="9,0", color=gray, penwidth=1, style=dashed];
+  10 -> 24 [label="15,0", color=gray, penwidth=1, style=dashed];
+  24 -> 9 [label="12,0", color=gray, penwidth=1, style=dashed];
+  0 -> 19 [label="5,0", color=gray, penwidth=1, style=dashed];
+  9 -> 18 [label="11,0", color=gray, penwidth=1, style=dashed];
+  0 -> 21 [label="15,0", color=gray, penwidth=1, style=dashed];
+  9 -> 20 [label="2,0", color=gray, penwidth=1, style=dashed];
+  13 -> 3 [label="2,0", color=gray, penwidth=1, style=dashed];
+  10 -> 17 [label="10,0", color=gray, penwidth=1, style=dashed];
+  4 -> 11 [label="1,0", color=gray, penwidth=1, style=dashed];
+  19 -> 2 [label="11,0", color=gray, penwidth=1, style=dashed];
+  17 -> 15 [label="2,0", color=gray, penwidth=1, style=dashed];
+  17 -> 7 [label="2,0", color=gray, penwidth=1, style=dashed];
+  18 -> 23 [label="5,0", color=gray, penwidth=1, style=dashed];
+  2 -> 14 [label="4,0", color=gray, penwidth=1, style=dashed];
+  14 -> 12 [label="12,0", color=gray, penwidth=1, style=dashed];
+  14 -> 16 [label="4,0", color=gray, penwidth=1, style=dashed];
+
+  // Minimum Spanning Tree edges (bold red)
+  0 -> 5 [label="2,0", color=red, penwidth=3.0, style=solid];
+  5 -> 4 [label="4,0", color=red, penwidth=3.0, style=solid];
+  4 -> 11 [label="1,0", color=red, penwidth=3.0, style=solid];
+  0 -> 19 [label="5,0", color=red, penwidth=3.0, style=solid];
+  19 -> 2 [label="11,0", color=red, penwidth=3.0, style=solid];
+  2 -> 14 [label="4,0", color=red, penwidth=3.0, style=solid];
+  14 -> 16 [label="4,0", color=red, penwidth=3.0, style=solid];
+  14 -> 12 [label="12,0", color=red, penwidth=3.0, style=solid];
+  0 -> 6 [label="12,0", color=red, penwidth=3.0, style=solid];
+  6 -> 13 [label="3,0", color=red, penwidth=3.0, style=solid];
+  13 -> 3 [label="2,0", color=red, penwidth=3.0, style=solid];
+  6 -> 1 [label="9,0", color=red, penwidth=3.0, style=solid];
+  4 -> 10 [label="13,0", color=red, penwidth=3.0, style=solid];
+  10 -> 17 [label="10,0", color=red, penwidth=3.0, style=solid];
+  17 -> 15 [label="2,0", color=red, penwidth=3.0, style=solid];
+  17 -> 7 [label="2,0", color=red, penwidth=3.0, style=solid];
+  0 -> 21 [label="15,0", color=red, penwidth=3.0, style=solid];
+  10 -> 24 [label="15,0", color=red, penwidth=3.0, style=solid];
+  24 -> 9 [label="12,0", color=red, penwidth=3.0, style=solid];
+  9 -> 20 [label="2,0", color=red, penwidth=3.0, style=solid];
+  9 -> 18 [label="11,0", color=red, penwidth=3.0, style=solid];
+  18 -> 23 [label="5,0", color=red, penwidth=3.0, style=solid];
+  0 -> 8 [label="15,0", color=red, penwidth=3.0, style=solid];
+  8 -> 22 [label="9,0", color=red, penwidth=3.0, style=solid];
+}
