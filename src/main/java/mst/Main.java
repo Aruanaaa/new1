@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("=== MST Algorithm Comparison ===\n");
 
-        // First, check JSON files structure
+        // 1st, check JSON files structure
         System.out.println("Checking JSON files structure...");
         JSONChecker.checkJSONFiles();
         System.out.println();
