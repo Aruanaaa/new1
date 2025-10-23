@@ -1,11 +1,4 @@
 
-## 📊 Обновленный REPORT.md
-
-Создайте файл `REPORT.md` в корне проекта:
-
-```markdown
-# Analytical Report: MST Algorithm Performance Comparison
-
 ## 1. Executive Summary
 
 This report analyzes the performance of Prim's and Kruskal's algorithms for finding Minimum Spanning Trees in city transportation networks. Both algorithms successfully computed MSTs with identical weights across all test cases, demonstrating their correctness. However, significant performance differences were observed, with Prim's algorithm consistently outperforming Kruskal's algorithm.
@@ -26,7 +19,7 @@ The analysis used five distinct graph datasets representing different city scena
 ### 2.2 Hardware and Software
 - **CPU**: Modern multi-core processor
 - **RAM**: 8GB+ 
-- **Java Version**: 11+
+- **Java Version**: 25
 - **Testing Framework**: JUnit 5
 
 ## 3. Algorithm Performance Analysis
@@ -90,40 +83,11 @@ For urban transportation networks, which tend to be dense (many possible roads b
 3. **Memory Efficiency**: Important for very large city models
 4. **Real-time Applications**: Better for interactive planning tools
 
-## 5. Conclusions and Recommendations
+## 5. Conclusion
 
-### 5.1 Primary Findings
+
 
 1. **Prim's algorithm is superior** for dense city transportation networks
 2. **Performance gap increases** with network size and density
 3. **Both algorithms produce identical** MST weights, confirming correctness
 4. **Operation counts correlate strongly** with execution time
-
-### 5.2 Recommendations
-
-| Scenario | Recommended Algorithm | Rationale |
-|----------|---------------------|-----------|
-| Dense urban networks | **Prim** | Better time complexity for dense graphs |
-| Sparse rural networks | **Kruskal** | Simpler implementation adequate |
-| Memory-constrained | **Prim** | Lower space complexity |
-| Educational purposes | **Kruskal** | Easier to understand and implement |
-| Real-time applications | **Prim** | Better performance characteristics |
-
-### 5.3 Future Work
-
-1. **Parallel implementations** of both algorithms
-2. **Dynamic graph updates** for real-time network modifications
-3. **Hybrid approaches** combining both algorithms' strengths
-4. **GPU acceleration** for very large city models
-
-## 6. References
-
-1. Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). Introduction to Algorithms.
-2. Sedgewick, R., & Wayne, K. (2011). Algorithms.
-3. Kleinberg, J., & Tardos, É. (2006). Algorithm Design.
-
----
-
-**Submitted by**: [Your Name]  
-**Student ID**: [Your ID]  
-**Date**: [Current Date]
