@@ -60,7 +60,7 @@ public class MSTComparison {
         List<Graph> smallGraphs = graphs.stream()
                 .filter(g -> g.getVertices() <= 50)
                 .limit(3)
-                .toList();
+                .collect(java.util.stream.Collectors.toList());
 
         if (!smallGraphs.isEmpty()) {
             GraphVisualizer.visualizeGraphs(smallGraphs, prim, kruskal);
