@@ -9,9 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-/**
- * Compares Prim's and Kruskal's algorithms and writes results to JSON
- */
+
 public class MSTComparison {
     private final List<Graph> graphs;
     private final List<ComparisonResult> results;
@@ -102,7 +100,7 @@ public class MSTComparison {
 
         java.io.File outputFile = new java.io.File(outputDir, "output_results.json");
 
-        System.out.println("📁 Writing JSON results to: " + outputFile.getAbsolutePath());
+        System.out.println("Writing JSON results to: " + outputFile.getAbsolutePath());
 
         try (FileWriter writer = new FileWriter(outputFile)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -168,12 +166,12 @@ public class MSTComparison {
             gson.toJson(root, writer);
             writer.flush();
 
-            System.out.println("✅ JSON results successfully written!");
-            System.out.println("📊 Contains results for " + results.size() + " graphs");
-            System.out.println("📏 File size: " + outputFile.length() + " bytes");
+            System.out.println("JSON results successfully written!");
+            System.out.println("Contains results for " + results.size() + " graphs");
+            System.out.println("File size: " + outputFile.length() + " bytes");
 
         } catch (IOException e) {
-            System.err.println("❌ Error writing results to JSON: " + e.getMessage());
+            System.err.println("Error writing results to JSON: " + e.getMessage());
             e.printStackTrace();
         }
     }
