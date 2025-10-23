@@ -32,11 +32,6 @@ src/
 └── mst_extra_large_graphs.json
 
 
-## How to Run
-
-- Java 11+
-- Maven
-- GraphViz (optional, for visualization)
 
 ### Running the Application
 ```bash
