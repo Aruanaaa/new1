@@ -61,10 +61,10 @@ public class CSVExporter {
                     primTotalTime < kruskalTotalTime ? "Yes" : "No"
             ));
 
-            System.out.println("✅ CSV results exported to: " + csvFile.getAbsolutePath());
+            System.out.println("CSV results exported to: " + csvFile.getAbsolutePath());
 
         } catch (IOException e) {
-            System.err.println("❌ Error exporting CSV: " + e.getMessage());
+            System.err.println("Error exporting CSV: " + e.getMessage());
         }
     }
 
