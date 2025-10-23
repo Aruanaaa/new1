@@ -24,12 +24,12 @@ public class MSTComparison {
     public void runComparison() {
         System.out.println("Running MST algorithm comparison...");
 
+        PrimAlgorithm prim = new PrimAlgorithm();
+        KruskalAlgorithm kruskal = new KruskalAlgorithm();
+
         for (int i = 0; i < graphs.size(); i++) {
             Graph graph = graphs.get(i);
             System.out.printf("Testing graph %d: %s%n", i + 1, graph);
-
-            PrimAlgorithm prim = new PrimAlgorithm();
-            KruskalAlgorithm kruskal = new KruskalAlgorithm();
 
             PrimAlgorithm.MSTResult primResult = prim.findMST(graph);
             KruskalAlgorithm.MSTResult kruskalResult = kruskal.findMST(graph);
@@ -44,41 +44,69 @@ public class MSTComparison {
 
             results.add(result);
             printResult(result);
+
+            // Print MST edges for first graph for verification
+            if (i == 0) {
+                printMSTDetails(graph, primResult, kruskalResult);
+            }
         }
 
+        // Generate outputs
         writeResultsToJson();
+        CSVExporter.exportToCSV(results, "comparison_results.csv");
+        CSVExporter.printSummaryTable(results);
+
+        // Generate visualizations for smaller graphs
+        List<Graph> smallGraphs = graphs.stream()
+                .filter(g -> g.getVertices() <= 50)
+                .limit(3)
+                .toList();
+
+        if (!smallGraphs.isEmpty()) {
+            GraphVisualizer.visualizeGraphs(smallGraphs, prim, kruskal);
+        }
     }
 
     private void printResult(ComparisonResult result) {
         System.out.printf("Graph %d Results:%n", result.graphId);
-        System.out.printf("  Prim:    weight=%.2f, time=%,d ns, operations=%,d%n",
-                result.primWeight, result.primTime, result.primOperations);
-        System.out.printf("  Kruskal: weight=%.2f, time=%,d ns, operations=%,d%n",
-                result.kruskalWeight, result.kruskalTime, result.kruskalOperations);
+        System.out.printf("  Prim:    weight=%.2f, time=%,d ns (%.3f ms), operations=%,d%n",
+                result.primWeight, result.primTime, result.primTime / 1_000_000.0, result.primOperations);
+        System.out.printf("  Kruskal: weight=%.2f, time=%,d ns (%.3f ms), operations=%,d%n",
+                result.kruskalWeight, result.kruskalTime, result.kruskalTime / 1_000_000.0, result.kruskalOperations);
         System.out.printf("  Weight difference: %.6f%n",
                 Math.abs(result.primWeight - result.kruskalWeight));
         System.out.println();
     }
 
+    private void printMSTDetails(Graph graph, PrimAlgorithm.MSTResult primResult, KruskalAlgorithm.MSTResult kruskalResult) {
+        System.out.println("=== MST Details (First Graph) ===");
+        System.out.printf("Prim's MST (%d edges, weight=%.2f):%n",
+                primResult.getEdges().size(), primResult.getTotalWeight());
+        for (Edge edge : primResult.getEdges()) {
+            System.out.printf("  %d - %d : %.2f%n", edge.getSource(), edge.getDestination(), edge.getWeight());
+        }
+
+        System.out.printf("Kruskal's MST (%d edges, weight=%.2f):%n",
+                kruskalResult.getEdges().size(), kruskalResult.getTotalWeight());
+        for (Edge edge : kruskalResult.getEdges()) {
+            System.out.printf("  %d - %d : %.2f%n", edge.getSource(), edge.getDestination(), edge.getWeight());
+        }
+        System.out.println();
+    }
+
     private void writeResultsToJson() {
-        // Используем путь к папке src/output
-        java.io.File outputDir = new java.io.File("src/output");
+        java.io.File outputDir = new java.io.File("output");
         if (!outputDir.exists()) {
-            boolean created = outputDir.mkdirs();
-            if (!created) {
-                System.err.println("❌ Failed to create output directory: " + outputDir.getAbsolutePath());
-                return;
-            }
+            outputDir.mkdirs();
         }
 
         java.io.File outputFile = new java.io.File(outputDir, "output_results.json");
 
-        System.out.println("📁 Writing to: " + outputFile.getAbsolutePath());
+        System.out.println("📁 Writing JSON results to: " + outputFile.getAbsolutePath());
 
         try (FileWriter writer = new FileWriter(outputFile)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-            // Создаем JSON структуру
             JsonArray resultsArray = new JsonArray();
 
             for (ComparisonResult result : results) {
@@ -87,18 +115,44 @@ public class MSTComparison {
                 resultObj.addProperty("vertices", result.vertices);
                 resultObj.addProperty("edges", result.edges);
 
-                // Prim results
+                // Prim results with edges list
                 JsonObject primObj = new JsonObject();
                 primObj.addProperty("totalWeight", result.primWeight);
                 primObj.addProperty("executionTimeNs", result.primTime);
+                primObj.addProperty("executionTimeMs", result.primTime / 1_000_000.0);
                 primObj.addProperty("operationsCount", result.primOperations);
+
+                // Add Prim MST edges array
+                JsonArray primEdgesArray = new JsonArray();
+                for (Edge edge : result.primResult.getEdges()) {
+                    JsonArray edgeArray = new JsonArray();
+                    edgeArray.add(edge.getSource());
+                    edgeArray.add(edge.getDestination());
+                    edgeArray.add(edge.getWeight());
+                    primEdgesArray.add(edgeArray);
+                }
+                primObj.add("mstEdges", primEdgesArray);
+
                 resultObj.add("prim", primObj);
 
-                // Kruskal results
+                // Kruskal results with edges list
                 JsonObject kruskalObj = new JsonObject();
                 kruskalObj.addProperty("totalWeight", result.kruskalWeight);
                 kruskalObj.addProperty("executionTimeNs", result.kruskalTime);
+                kruskalObj.addProperty("executionTimeMs", result.kruskalTime / 1_000_000.0);
                 kruskalObj.addProperty("operationsCount", result.kruskalOperations);
+
+                // Add Kruskal MST edges array
+                JsonArray kruskalEdgesArray = new JsonArray();
+                for (Edge edge : result.kruskalResult.getEdges()) {
+                    JsonArray edgeArray = new JsonArray();
+                    edgeArray.add(edge.getSource());
+                    edgeArray.add(edge.getDestination());
+                    edgeArray.add(edge.getWeight());
+                    kruskalEdgesArray.add(edgeArray);
+                }
+                kruskalObj.add("mstEdges", kruskalEdgesArray);
+
                 resultObj.add("kruskal", kruskalObj);
 
                 resultsArray.add(resultObj);
@@ -109,57 +163,18 @@ public class MSTComparison {
             root.addProperty("summary", generateSummary());
             root.addProperty("totalGraphsTested", results.size());
             root.addProperty("comparisonDate", new java.util.Date().toString());
+            root.addProperty("algorithmComparison", getAlgorithmComparison());
 
-            // Записываем JSON
             gson.toJson(root, writer);
-            writer.flush(); // Принудительно сбрасываем буфер
+            writer.flush();
 
-            System.out.println("✅ Results successfully written!");
-            System.out.println("📊 File contains results for " + results.size() + " graphs");
-            System.out.println("📁 Location: " + outputFile.getAbsolutePath());
-
-            // Проверяем что файл не пустой
-            if (outputFile.exists() && outputFile.length() > 0) {
-                System.out.println("📏 File size: " + outputFile.length() + " bytes");
-            } else {
-                System.err.println("❌ File is empty or doesn't exist!");
-            }
+            System.out.println("✅ JSON results successfully written!");
+            System.out.println("📊 Contains results for " + results.size() + " graphs");
+            System.out.println("📏 File size: " + outputFile.length() + " bytes");
 
         } catch (IOException e) {
             System.err.println("❌ Error writing results to JSON: " + e.getMessage());
             e.printStackTrace();
-
-            // Альтернативная попытка записи
-            writeBackupResults();
-        }
-    }
-
-    private void writeBackupResults() {
-        try {
-            // Пробуем записать в корень проекта как запасной вариант
-            java.io.File backupFile = new java.io.File("backup_results.json");
-            try (FileWriter writer = new FileWriter(backupFile)) {
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                JsonArray resultsArray = new JsonArray();
-
-                for (ComparisonResult result : results) {
-                    JsonObject resultObj = new JsonObject();
-                    resultObj.addProperty("graphId", result.graphId);
-                    resultObj.addProperty("vertices", result.vertices);
-                    resultObj.addProperty("edges", result.edges);
-                    resultObj.addProperty("primWeight", result.primWeight);
-                    resultObj.addProperty("primTime", result.primTime);
-                    resultObj.addProperty("kruskalWeight", result.kruskalWeight);
-                    resultObj.addProperty("kruskalTime", result.kruskalTime);
-                    resultsArray.add(resultObj);
-                }
-
-                gson.toJson(resultsArray, writer);
-                writer.flush();
-                System.out.println("📁 Backup results written to: " + backupFile.getAbsolutePath());
-            }
-        } catch (IOException e) {
-            System.err.println("❌ Backup also failed: " + e.getMessage());
         }
     }
 
@@ -175,11 +190,24 @@ public class MSTComparison {
 
         String fasterAlgorithm = primTotalTime < kruskalTotalTime ? "Prim" : "Kruskal";
         long timeDifference = Math.abs(primTotalTime - kruskalTotalTime);
+        double speedup = (double) Math.max(primTotalTime, kruskalTotalTime) / Math.min(primTotalTime, kruskalTotalTime);
 
         return String.format(
-                "Prim total: %,d ns, %,d ops | Kruskal total: %,d ns, %,d ops | Faster: %s (by %,d ns)",
-                primTotalTime, primTotalOps, kruskalTotalTime, kruskalTotalOps, fasterAlgorithm, timeDifference
+                "Prim: %,d ns (%.3f ms), %,d ops | Kruskal: %,d ns (%.3f ms), %,d ops | Faster: %s (%.2fx speedup)",
+                primTotalTime, primTotalTime / 1_000_000.0, primTotalOps,
+                kruskalTotalTime, kruskalTotalTime / 1_000_000.0, kruskalTotalOps,
+                fasterAlgorithm, speedup
         );
+    }
+
+    private String getAlgorithmComparison() {
+        long primWins = results.stream()
+                .filter(r -> r.primTime < r.kruskalTime)
+                .count();
+        long kruskalWins = results.size() - primWins;
+
+        return String.format("Prim faster in %d/%d cases (%.1f%%)",
+                primWins, results.size(), (primWins * 100.0 / results.size()));
     }
 
     private static class ComparisonResult {
@@ -192,6 +220,8 @@ public class MSTComparison {
         final double kruskalWeight;
         final long kruskalTime;
         final long kruskalOperations;
+        final PrimAlgorithm.MSTResult primResult;
+        final KruskalAlgorithm.MSTResult kruskalResult;
 
         ComparisonResult(int graphId, int vertices, int edges,
                          PrimAlgorithm.MSTResult primResult,
@@ -205,6 +235,8 @@ public class MSTComparison {
             this.kruskalWeight = kruskalResult.getTotalWeight();
             this.kruskalTime = kruskalResult.getExecutionTime();
             this.kruskalOperations = kruskalResult.getOperationsCount();
+            this.primResult = primResult;
+            this.kruskalResult = kruskalResult;
         }
     }
 }
