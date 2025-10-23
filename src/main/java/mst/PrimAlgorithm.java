@@ -2,9 +2,7 @@ package mst;
 
 import java.util.*;
 
-/**
- * Implementation of Prim's algorithm for Minimum Spanning Tree
- */
+
 public class PrimAlgorithm {
     private long operationsCount;
     private long executionTime;
