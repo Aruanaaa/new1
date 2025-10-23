@@ -36,9 +36,7 @@ src/
 ### Running the Application
 ```bash
 # Compile and run
-mvn compile exec:java -Dexec.mainClass="mst.Main"
 
-# Or run directly from IDE
 # Run Main.java from src/main/java/mst/
 
 
