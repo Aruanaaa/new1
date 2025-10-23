@@ -2,9 +2,7 @@ package mst;
 
 import java.util.*;
 
-/**
- * Implementation of Kruskal's algorithm with Union-Find data structure
- */
+
 public class KruskalAlgorithm {
     private long operationsCount;
     private long executionTime;
