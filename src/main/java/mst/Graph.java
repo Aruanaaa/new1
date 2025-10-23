@@ -105,7 +105,7 @@ public class Graph {
         for (JsonElement graphElement : graphsArray) {
             JsonObject graphObject = graphElement.getAsJsonObject();
 
-            // Get nodes and create mapping from node name to index
+
             JsonArray nodesArray = graphObject.getAsJsonArray("nodes");
             Map<String, Integer> nodeToIndex = new HashMap<>();
             List<String> nodeNames = new ArrayList<>();
