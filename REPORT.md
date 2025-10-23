@@ -16,11 +16,6 @@ The analysis used five distinct graph datasets representing different city scena
 | 4 | 2,197 | 3,076 | 0.0013 | Very sparse |
 | 5 | 2,692 | 142,872 | 0.0395 | Dense network |
 
-### 2.2 Hardware and Software
-- **CPU**: Modern multi-core processor
-- **RAM**: 8GB+ 
-- **Java Version**: 25
-- **Testing Framework**: JUnit 5
 
 ## 3. Algorithm Performance Analysis
 
