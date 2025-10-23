@@ -43,7 +43,7 @@ public class MSTComparison {
             results.add(result);
             printResult(result);
 
-            // Print MST edges for first graph for verification
+            // Print MST edges for first graph for verificationn
             if (i == 0) {
                 printMSTDetails(graph, primResult, kruskalResult);
             }
