@@ -98,9 +98,7 @@ public class Graph {
         return graphs;
     }
 
-    /**
-     * Parse new format: { "graphs": [ { "id": 1, "nodes": ["A", "B", ...], "edges": [{"from": "A", "to": "B", "weight": 1}, ...] } ] }
-     */
+
     private static List<Graph> parseNewFormat(JsonArray graphsArray) {
         List<Graph> graphs = new ArrayList<>();
 
@@ -142,9 +140,7 @@ public class Graph {
         return graphs;
     }
 
-    /**
-     * Parse old format: [ { "vertices": 4, "edges": [[0, 1, 2.0], ...] } ]
-     */
+
     private static List<Graph> parseOldFormat(JsonArray graphsArray) {
         List<Graph> graphs = new ArrayList<>();
 

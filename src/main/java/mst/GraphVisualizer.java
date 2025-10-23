@@ -4,14 +4,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Generates GraphViz DOT files for visualizing graphs and MST results
- */
+
 public class GraphVisualizer {
 
-    /**
-     * Generate DOT file for GraphViz visualization
-     */
+
     public static void generateDOT(Graph graph, List<Edge> mstEdges, String filename, String graphName) {
         // Ensure output directory exists
         java.io.File outputDir = new java.io.File("output");
@@ -44,16 +40,14 @@ public class GraphVisualizer {
             }
 
             writer.write("}\n");
-            System.out.println("✅ DOT file generated: " + dotFile.getAbsolutePath());
+            System.out.println("DOT file generated: " + dotFile.getAbsolutePath());
 
         } catch (IOException e) {
-            System.err.println("❌ Error generating DOT file: " + e.getMessage());
+            System.err.println("Error generating DOT file: " + e.getMessage());
         }
     }
 
-    /**
-     * Generate simplified DOT file for large graphs (shows only MST)
-     */
+
     public static void generateSimpleDOT(Graph graph, List<Edge> mstEdges, String filename, String graphName) {
         java.io.File outputDir = new java.io.File("output");
         if (!outputDir.exists()) {
@@ -76,10 +70,10 @@ public class GraphVisualizer {
             }
 
             writer.write("}\n");
-            System.out.println("✅ Simplified DOT file generated: " + dotFile.getAbsolutePath());
+            System.out.println("Simplified DOT file generated: " + dotFile.getAbsolutePath());
 
         } catch (IOException e) {
-            System.err.println("❌ Error generating simplified DOT file: " + e.getMessage());
+            System.err.println("Error generating simplified DOT file: " + e.getMessage());
         }
     }
 
@@ -123,7 +117,7 @@ public class GraphVisualizer {
      * Print instructions for rendering DOT files
      */
     private static void printVisualizationInstructions() {
-        System.out.println("\n📊 GRAPH VISUALIZATION INSTRUCTIONS:");
+        System.out.println("\n GRAPH VISUALIZATION INSTRUCTIONS:");
         System.out.println("1. ONLINE (Easiest):");
         System.out.println("   - Go to: https://edotor.net/");
         System.out.println("   - Copy content from .dot files in output folder");
@@ -138,7 +132,7 @@ public class GraphVisualizer {
         System.out.println("   dot -Tpng output/graph_1_prim.dot -o output/graph_1_prim.png");
         System.out.println("   dot -Tpng output/graph_1_kruskal.dot -o output/graph_1_kruskal.png");
 
-        System.out.println("\n🎨 TIPS:");
+        System.out.println("\n TIPS:");
         System.out.println("   - Red edges: MST edges");
         System.out.println("   - Gray dashed edges: Original graph edges");
         System.out.println("   - Blue circles: City districts (vertices)");

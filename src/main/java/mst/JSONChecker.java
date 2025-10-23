@@ -1,15 +1,13 @@
 package mst;
 
-import com.google.gson.JsonArray; // Добавляем этот импорт
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-/**
- * Utility to check JSON file structure
- */
+
 public class JSONChecker {
 
     public static void checkJSONFiles() {
@@ -31,7 +29,7 @@ public class JSONChecker {
     private static void checkJSONFile(String filename) {
         try (InputStream inputStream = Graph.class.getClassLoader().getResourceAsStream(filename)) {
             if (inputStream == null) {
-                System.out.println("  ❌ File not found in resources");
+                System.out.println("  File not found in resources");
                 return;
             }
 
@@ -39,7 +37,7 @@ public class JSONChecker {
             JsonElement jsonElement = JsonParser.parseReader(reader);
 
             if (jsonElement.isJsonObject() && jsonElement.getAsJsonObject().has("graphs")) {
-                System.out.println("  ✅ New format: { \"graphs\": [ ... ] }");
+                System.out.println("  New format: { \"graphs\": [ ... ] }");
                 JsonArray graphsArray = jsonElement.getAsJsonObject().getAsJsonArray("graphs");
                 System.out.println("  Number of graphs: " + graphsArray.size());
 
@@ -52,14 +50,14 @@ public class JSONChecker {
                     if (firstGraph.has("edges")) System.out.println("    - edges: " + firstGraph.getAsJsonArray("edges").size() + " edges");
                 }
             } else if (jsonElement.isJsonArray()) {
-                System.out.println("  ✅ Old format: [ ... ] (array of graphs)");
+                System.out.println("  Old format: [ ... ] (array of graphs)");
                 System.out.println("  Number of graphs: " + jsonElement.getAsJsonArray().size());
             } else {
-                System.out.println("  ❌ Unknown format");
+                System.out.println("  Unknown format");
             }
 
         } catch (Exception e) {
-            System.out.println("  ❌ Error: " + e.getMessage());
+            System.out.println("  Error: " + e.getMessage());
         }
     }
 }
