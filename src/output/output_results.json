@@ -1,0 +1,82 @@
+{
+  "results": [
+    {
+      "graphId": 1,
+      "vertices": 2135,
+      "edges": 2134,
+      "prim": {
+        "totalWeight": 32827.0,
+        "executionTimeNs": 303200,
+        "operationsCount": 32016
+      },
+      "kruskal": {
+        "totalWeight": 32827.0,
+        "executionTimeNs": 350800,
+        "operationsCount": 38413
+      }
+    },
+    {
+      "graphId": 2,
+      "vertices": 2290,
+      "edges": 26209,
+      "prim": {
+        "totalWeight": 4256.0,
+        "executionTimeNs": 1876900,
+        "operationsCount": 154146
+      },
+      "kruskal": {
+        "totalWeight": 4256.0,
+        "executionTimeNs": 3732700,
+        "operationsCount": 400977
+      }
+    },
+    {
+      "graphId": 3,
+      "vertices": 2399,
+      "edges": 143820,
+      "prim": {
+        "totalWeight": 2403.0,
+        "executionTimeNs": 6993400,
+        "operationsCount": 632599
+      },
+      "kruskal": {
+        "totalWeight": 2403.0,
+        "executionTimeNs": 19502400,
+        "operationsCount": 2479592
+      }
+    },
+    {
+      "graphId": 4,
+      "vertices": 2197,
+      "edges": 3076,
+      "prim": {
+        "totalWeight": 16939.0,
+        "executionTimeNs": 218700,
+        "operationsCount": 39126
+      },
+      "kruskal": {
+        "totalWeight": 16939.0,
+        "executionTimeNs": 488500,
+        "operationsCount": 51720
+      }
+    },
+    {
+      "graphId": 5,
+      "vertices": 2692,
+      "edges": 142872,
+      "prim": {
+        "totalWeight": 2758.0,
+        "executionTimeNs": 5835000,
+        "operationsCount": 636360
+      },
+      "kruskal": {
+        "totalWeight": 2758.0,
+        "executionTimeNs": 20905700,
+        "operationsCount": 2596558
+      }
+    }
+  ],
+  "summary": "Prim total: 15 227 200 ns, 1 494 247 ops | Kruskal total: 44 980 100 ns, 5 567 260 ops | Faster: Prim (by 29 752 900 ns)",
+  "totalGraphsTested": 5,
+  "comparisonDate": "Wed Oct 22 23:44:35 GMT+05:00 2025"
+}
