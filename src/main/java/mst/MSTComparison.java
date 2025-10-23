@@ -210,22 +210,23 @@ public class MSTComparison {
                 primWins, results.size(), (primWins * 100.0 / results.size()));
     }
 
-    private static class ComparisonResult {
-        final int graphId;
-        final int vertices;
-        final int edges;
-        final double primWeight;
-        final long primTime;
-        final long primOperations;
-        final double kruskalWeight;
-        final long kruskalTime;
-        final long kruskalOperations;
-        final PrimAlgorithm.MSTResult primResult;
-        final KruskalAlgorithm.MSTResult kruskalResult;
+    // Public static class to allow access from CSVExporter
+    public static class ComparisonResult {
+        public final int graphId;
+        public final int vertices;
+        public final int edges;
+        public final double primWeight;
+        public final long primTime;
+        public final long primOperations;
+        public final double kruskalWeight;
+        public final long kruskalTime;
+        public final long kruskalOperations;
+        public final PrimAlgorithm.MSTResult primResult;
+        public final KruskalAlgorithm.MSTResult kruskalResult;
 
-        ComparisonResult(int graphId, int vertices, int edges,
-                         PrimAlgorithm.MSTResult primResult,
-                         KruskalAlgorithm.MSTResult kruskalResult) {
+        public ComparisonResult(int graphId, int vertices, int edges,
+                                PrimAlgorithm.MSTResult primResult,
+                                KruskalAlgorithm.MSTResult kruskalResult) {
             this.graphId = graphId;
             this.vertices = vertices;
             this.edges = edges;
