@@ -113,7 +113,7 @@ public class MSTComparison {
                 resultObj.addProperty("vertices", result.vertices);
                 resultObj.addProperty("edges", result.edges);
 
-                // Prim results with edges list
+                // Prim result with edges list
                 JsonObject primObj = new JsonObject();
                 primObj.addProperty("totalWeight", result.primWeight);
                 primObj.addProperty("executionTimeNs", result.primTime);
