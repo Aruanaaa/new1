@@ -11,7 +11,7 @@ public class Main {
         JSONChecker.checkJSONFiles();
         System.out.println();
 
-        // Then try to load and process
+        // Then try to load and processs
         String[] testFiles = {
                 "mst_test_graphs.json",
                 "mst_small_graphs.json",
