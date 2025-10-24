@@ -171,7 +171,7 @@ public class MSTComparison {
             System.out.println("File size: " + outputFile.length() + " bytes");
 
         } catch (IOException e) {
-            System.err.println("Error writing results to JSON: " + e.getMessage());
+            System.err.println("Erroor writing results to JSON: " + e.getMessage());
             e.printStackTrace();
         }
     }
