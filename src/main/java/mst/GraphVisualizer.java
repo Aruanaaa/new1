@@ -32,7 +32,7 @@ public class GraphVisualizer {
                         edge.getSource(), edge.getDestination(), edge.getWeight()));
             }
 
-            // Write MST edges in bold red
+            // Write MST edge in bold red
             writer.write("\n  // Minimum Spanning Tree edges (bold red)\n");
             for (Edge edge : mstEdges) {
                 writer.write(String.format("  %d -> %d [label=\"%.1f\", color=red, penwidth=3.0, style=solid];\n",
