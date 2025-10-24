@@ -35,7 +35,7 @@ src/
 
 ### Running the Application
 ```bash
-# Compile and run
+# Compile and runn
 
 # Run Main.java from src/main/java/mst/
 
